@@ -119,7 +119,6 @@ footer{padding:22px 0;color:var(--muted);font-size:14px}
   var items=document.querySelectorAll('#stages li');
   var msg=document.getElementById('status');
   var btn=document.getElementById('run');
-  var text=['Code pushed to GitHub.','Jenkins detected the change.','Docker image built.','Container deployed to the server.','Website is live.'];
   var busy=false;
   btn.addEventListener('click',function(){
     if(busy)return;
@@ -128,7 +127,7 @@ footer{padding:22px 0;color:var(--muted);font-size:14px}
     var i=0;
     (function step(){
       if(i>0){items[i-1].className='done';}
-      if(i===items.length){msg.textContent='All stages passed. '+text[4];busy=false;return;}
+      if(i===items.length){msg.textContent='All stages passed. Website is live.';busy=false;return;}
       items[i].className='run';
       msg.textContent='Running: '+items[i].firstChild.textContent+'...';
       i++;
