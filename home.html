@@ -1,22 +1,141 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>DevOps CI/CD Project</title>
-    <style>
-        body{
-            font-family: Arial, sans-serif;
-            background:#1e293b;
-            color:white;
-            text-align:center;
-            margin-top:120px;
-        }
-        h1{
-            color:#38bdf8;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sara Sherin | Junior DevOps Engineer</title>
+<style>
+:root{--bg:#f2f5f7;--ink:#0e1b26;--muted:#566674;--line:#cdd7de;--accent:#1747c8;--ok:#0d7a55;--panel:#ffffff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 "Segoe UI",system-ui,-apple-system,Arial,sans-serif}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:18px;padding-bottom:18px}
+.brand{font-weight:600}
+nav a{margin-left:22px;color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--ink)}
+.hero{padding:88px 0 56px}
+h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:clamp(34px,6vw,58px);line-height:1.12;margin:0 0 22px;letter-spacing:-.5px;max-width:15em}
+.lead{color:var(--muted);max-width:34em;margin:0 0 30px}
+.btn{display:inline-block;background:var(--ink);color:#fff;padding:11px 20px;border-radius:6px;text-decoration:none;font-weight:600;border:0;font-size:16px;cursor:pointer;font-family:inherit}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--ink);margin-left:10px}
+.pipe{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin-bottom:64px}
+.pipe-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.pipe-top p{margin:0;color:var(--muted);font-size:15px}
+.stages{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.stages li{flex:1 1 120px;border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:15px;transition:background .3s,border-color .3s,color .3s}
+.stages li small{display:block;color:var(--muted);font-size:13px}
+.stages li.run{border-color:var(--accent);background:#e8eefc}
+.stages li.done{border-color:var(--ok);background:#e3f4ec}
+.stages li.done small{color:var(--ok)}
+#status{margin:14px 0 0;font-size:15px;min-height:1.6em}
+section{padding:8px 0 56px}
+h2{font-family:Georgia,serif;font-weight:400;font-size:30px;margin:0 0 20px}
+.proj{border-top:1px solid var(--line);padding:22px 0;display:grid;grid-template-columns:150px 1fr;gap:8px 28px}
+.proj:last-child{border-bottom:1px solid var(--line)}
+.proj h3{margin:0;font-size:18px}
+.proj .tag{color:var(--muted);font-size:15px}
+.proj p{margin:0 0 6px}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px}
+.skills h3{font-size:16px;margin:0 0 6px}
+.skills p{margin:0;color:var(--muted)}
+.contact{background:var(--ink);color:#fff;padding:56px 0;margin-top:20px}
+.contact h2{color:#fff}
+.contact a{color:#9dbbff}
+footer{padding:22px 0;color:var(--muted);font-size:14px}
+@media(max-width:620px){.proj{grid-template-columns:1fr}nav a{margin-left:14px}.hero{padding-top:56px}}
+@media(prefers-reduced-motion:reduce){.stages li{transition:none}}
+</style>
 </head>
 <body>
-    <h1>Hello DevOps CI/CD Pipeline</h1>
-    <p>Automatically deployed using GitHub, Jenkins, Docker and Linux.</p>
+<header>
+  <div class="wrap">
+    <span class="brand">Sara Sherin</span>
+    <nav aria-label="Main"><a href="#work">Work</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <h1>I automate the path from git push to a running website.</h1>
+    <p class="lead">I'm a Junior DevOps Engineer building CI/CD pipelines with Jenkins, Docker, GitHub and Linux. This page you are reading was deployed by one.</p>
+    <a class="btn" href="#work">See my work</a><a class="btn alt" href="#contact">Get in touch</a>
+  </div>
+
+  <div class="pipe" aria-labelledby="pipe-title">
+    <div class="pipe-top">
+      <p id="pipe-title">The pipeline that deployed this site</p>
+      <button class="btn" id="run" type="button">Replay pipeline</button>
+    </div>
+    <ol class="stages" id="stages">
+      <li>Push<small>GitHub</small></li>
+      <li>Trigger<small>Jenkins</small></li>
+      <li>Build<small>Docker image</small></li>
+      <li>Deploy<small>Ubuntu server</small></li>
+      <li>Live<small>Website</small></li>
+    </ol>
+    <p id="status" role="status">Press replay to watch each stage run.</p>
+  </div>
+
+  <section id="work" aria-labelledby="work-title">
+    <h2 id="work-title">Selected work</h2>
+    <div class="proj">
+      <div><h3>CI/CD pipeline</h3><span class="tag">Jenkins, Docker</span></div>
+      <div><p>Every push to GitHub builds a new Docker image and redeploys the site on a Linux server, with no manual steps.</p><p class="tag">Pipeline written as a Jenkinsfile, deployed with a shell script.</p></div>
+    </div>
+    <div class="proj">
+      <div><h3>Containerised web app</h3><span class="tag">Docker, nginx</span></div>
+      <div><p>A static site packaged into a small nginx image, so it runs the same on any machine.</p></div>
+    </div>
+    <div class="proj">
+      <div><h3>Linux server setup</h3><span class="tag">Ubuntu, SSH</span></div>
+      <div><p>Configured an Ubuntu environment with secure SSH access, users and permissions for automated deployments.</p></div>
+    </div>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-title">
+    <h2 id="skills-title">Skills</h2>
+    <div class="skills">
+      <div><h3>Automation</h3><p>Jenkins pipelines, shell scripting, GitHub webhooks</p></div>
+      <div><h3>Containers</h3><p>Docker images, containers, Dockerfiles</p></div>
+      <div><h3>Systems</h3><p>Ubuntu, WSL, SSH, Git</p></div>
+    </div>
+  </section>
+</main>
+
+<div class="contact" id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p>Looking for a junior DevOps role. Find my code on <a href="https://github.com/Sara-Sherin">GitHub</a>.</p>
+  </div>
+</div>
+
+<footer><div class="wrap">Built and deployed automatically with Jenkins and Docker.</div></footer>
+
+<script>
+(function(){
+  var items=document.querySelectorAll('#stages li');
+  var msg=document.getElementById('status');
+  var btn=document.getElementById('run');
+  var text=['Code pushed to GitHub.','Jenkins detected the change.','Docker image built.','Container deployed to the server.','Website is live.'];
+  var busy=false;
+  btn.addEventListener('click',function(){
+    if(busy)return;
+    busy=true;
+    items.forEach(function(li){li.className='';});
+    var i=0;
+    (function step(){
+      if(i>0){items[i-1].className='done';}
+      if(i===items.length){msg.textContent='All stages passed. '+text[4];busy=false;return;}
+      items[i].className='run';
+      msg.textContent='Running: '+items[i].firstChild.textContent+'...';
+      i++;
+      setTimeout(step,700);
+    })();
+  });
+})();
+</script>
 </body>
 </html>
